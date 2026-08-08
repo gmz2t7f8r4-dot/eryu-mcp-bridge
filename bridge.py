@@ -3,7 +3,7 @@ from mcp.server.fastmcp import FastMCP
 
 ERYU_URL = os.environ.get("ERYU_URL", "").rstrip("/")
 ERYU_TOKEN = os.environ.get("ERYU_TOKEN", "")
-mcp = FastMCP("eryu-bridge", host="0.0.0.0", port=3000)
+mcp = FastMCP("eryu-bridge", host="0.0.0.0", port=int(os.environ.get("PORT", "3000")))
 
 def _api(path, method="GET", body=None):
     req = urllib.request.Request(ERYU_URL + path, method=method,
